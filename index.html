@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Debre Markos Secondary School</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-row">
+      <a href="#top" class="brand">Debre Markos <span>Secondary School</span></a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">&#9776;</button>
+      <nav id="navMenu">
+        <a href="#about">About</a>
+        <a href="#announcements">Announcements</a>
+        <a href="#academics">Academics</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <section id="top" class="hero">
+    <div class="container hero-inner">
+      <p class="eyebrow">Debre Markos, Amhara Region, Ethiopia</p>
+      <h1>Building strong foundations for the next generation.</h1>
+      <p class="hero-sub">
+        Quality secondary education rooted in community, discipline, and academic excellence.
+      </p>
+      <a href="#about" class="btn">Learn more &darr;</a>
+    </div>
+  </section>
+
+  <section id="about" class="section">
+    <div class="container">
+      <p class="section-label">01 &mdash; About</p>
+      <h2>About our school</h2>
+      <p>
+        Debre Markos Secondary School serves students across grades 9&ndash;12, preparing
+        them for the Ethiopian General Secondary Education Certificate Examination and
+        for life beyond the classroom. We combine a rigorous academic program with
+        extracurricular activities in sports, clubs, and community service.
+      </p>
+      <div class="stat-row">
+        <div class="stat"><strong>1,200+</strong><span>Students enrolled</span></div>
+        <div class="stat"><strong>45</strong><span>Teaching staff</span></div>
+        <div class="stat"><strong>4</strong><span>Grade levels</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="announcements" class="section alt">
+    <div class="container">
+      <p class="section-label">02 &mdash; Announcements</p>
+      <h2>Latest announcements</h2>
+      <div class="card-grid" id="announcementList">
+        <article class="card">
+          <p class="card-date">Sep 1, 2026</p>
+          <h3>New academic year begins</h3>
+          <p>Classes resume for all grade levels. Please check your grade's schedule at the main office.</p>
+        </article>
+        <article class="card">
+          <p class="card-date">Aug 20, 2026</p>
+          <h3>Registration deadline extended</h3>
+          <p>New and returning student registration has been extended by one week.</p>
+        </article>
+        <article class="card">
+          <p class="card-date">Aug 10, 2026</p>
+          <h3>Sports club tryouts</h3>
+          <p>Tryouts for the football and athletics clubs will be held on the school grounds.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="academics" class="section">
+    <div class="container">
+      <p class="section-label">03 &mdash; Academics</p>
+      <h2>Programs offered</h2>
+      <div class="card-grid">
+        <article class="card">
+          <h3>Natural Science</h3>
+          <p>Mathematics, Physics, Chemistry, and Biology tracks for students pursuing STEM fields.</p>
+        </article>
+        <article class="card">
+          <h3>Social Science</h3>
+          <p>History, Geography, Economics, and Civics for students pursuing humanities and social studies.</p>
+        </article>
+        <article class="card">
+          <h3>Languages</h3>
+          <p>Amharic, English, and additional language instruction to build strong communication skills.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="section alt">
+    <div class="container contact-grid">
+      <div>
+        <p class="section-label">04 &mdash; Contact</p>
+        <h2>Get in touch</h2>
+        <p>Have a question about admissions, academics, or a specific department? Send us a message.</p>
+        <ul class="contact-info">
+          <li>Debre Markos, Amhara Region, Ethiopia</li>
+          <li>info@debremarkoshs.edu.et</li>
+        </ul>
+      </div>
+      <form id="contactForm" class="contact-form">
+        <input type="text" placeholder="Full name" required />
+        <input type="email" placeholder="Email address" required />
+        <textarea rows="4" placeholder="Message" required></textarea>
+        <button type="submit" class="btn">Send message</button>
+        <p class="form-note" id="formNote"></p>
+      </form>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 Debre Markos Secondary School</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
