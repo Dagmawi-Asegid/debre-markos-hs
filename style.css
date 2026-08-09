@@ -1,11 +1,22 @@
 :root {
   --navy: #10233d;
   --gold: #d99a2b;
+  /* Darker than --gold specifically for text-on-light use — the raw gold
+     is ~2.4:1 contrast on white (fails WCAG AA); this is ~5:1. */
+  --gold-text: #8a5a12;
   --bg: #fbfaf7;
   --surface: #ffffff;
   --border: #e7e4db;
   --text: #1c1f24;
   --muted: #656c76;
+
+  --fs-xs: 0.78rem;
+  --fs-sm: 0.88rem;
+  --fs-base: 1rem;
+  --fs-md: 1.05rem;
+  --fs-lg: 1.3rem;
+  --fs-xl: 1.7rem;
+  --fs-2xl: 2.4rem;
 }
 
 * {
@@ -15,6 +26,7 @@
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: var(--fs-base);
   color: var(--text);
   background: var(--bg);
   line-height: 1.6;
@@ -24,6 +36,36 @@ body {
   max-width: 1080px;
   margin: 0 auto;
   padding: 0 24px;
+}
+
+/* Skip link */
+.skip-link {
+  position: absolute;
+  top: -48px;
+  left: 12px;
+  z-index: 50;
+  background: var(--gold);
+  color: #1c1f24;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  text-decoration: none;
+  transition: top 0.15s;
+}
+
+.skip-link:focus {
+  top: 12px;
+}
+
+/* Focus states */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+  border-radius: 4px;
 }
 
 /* Header */
@@ -43,10 +85,18 @@ body {
 }
 
 .brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   color: #fff;
   text-decoration: none;
   font-weight: 700;
-  font-size: 1.05rem;
+  font-size: var(--fs-md);
+}
+
+.brand-mark {
+  display: block;
+  border-radius: 50%;
 }
 
 .brand span {
@@ -67,7 +117,7 @@ nav a {
   color: #cfd6de;
   text-decoration: none;
   margin-left: 28px;
-  font-size: 0.92rem;
+  font-size: var(--fs-sm);
   transition: color 0.15s;
 }
 
@@ -79,31 +129,59 @@ nav a:hover {
 .hero {
   background: linear-gradient(160deg, var(--navy), #17304f);
   color: #fff;
-  padding: 90px 0 100px;
+  padding: 80px 0;
 }
 
 .hero-inner {
-  max-width: 640px;
+  display: flex;
+  align-items: center;
+  gap: 48px;
+}
+
+.hero-text {
+  max-width: 560px;
+  flex: 1;
 }
 
 .eyebrow {
   color: var(--gold);
-  font-size: 0.8rem;
+  font-size: var(--fs-xs);
   letter-spacing: 0.08em;
   text-transform: uppercase;
   margin-bottom: 14px;
 }
 
 .hero h1 {
-  font-size: 2.4rem;
+  font-size: var(--fs-2xl);
   line-height: 1.2;
   margin: 0 0 16px;
 }
 
 .hero-sub {
   color: #cfd6de;
-  font-size: 1.05rem;
+  font-size: var(--fs-md);
   margin-bottom: 28px;
+}
+
+/* Reserved image slot: a real campus/student photo can replace this panel
+   later (swap for an <img> or add a background-image) without touching
+   the surrounding layout. */
+.hero-photo {
+  flex: none;
+  width: 220px;
+  height: 220px;
+  border-radius: 20px;
+  background: linear-gradient(155deg, #1c3a5e, #0b1a2e);
+  border: 1px solid rgba(217, 154, 43, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(217, 154, 43, 0.35);
+}
+
+.hero-photo-mark {
+  width: 110px;
+  height: 110px;
 }
 
 .btn {
@@ -114,7 +192,7 @@ nav a:hover {
   border-radius: 6px;
   text-decoration: none;
   font-weight: 600;
-  font-size: 0.9rem;
+  font-size: var(--fs-sm);
   border: none;
   cursor: pointer;
 }
@@ -131,17 +209,74 @@ nav a:hover {
 }
 
 .section-label {
-  color: var(--gold);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--gold-text);
   font-weight: 700;
-  font-size: 0.78rem;
+  font-size: var(--fs-xs);
   letter-spacing: 0.06em;
   text-transform: uppercase;
   margin-bottom: 8px;
 }
 
+.section-label::before {
+  content: "";
+  display: inline-block;
+  width: 26px;
+  height: 2px;
+  background: var(--gold);
+}
+
 .section h2 {
-  font-size: 1.7rem;
+  font-size: var(--fs-xl);
   margin: 0 0 18px;
+}
+
+.section-intro {
+  max-width: 640px;
+  color: var(--muted);
+  margin: 0 0 8px;
+}
+
+/* University placements */
+.uni-group-title {
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--navy);
+  margin: 28px 0 12px;
+}
+
+.uni-badge-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.uni-badge {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 8px 16px;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--navy);
+}
+
+.section.alt .uni-badge {
+  background: var(--bg);
+}
+
+.uni-badge em {
+  font-style: normal;
+  font-weight: 400;
+  font-size: var(--fs-xs);
+  color: var(--muted);
 }
 
 .stat-row {
@@ -153,13 +288,13 @@ nav a:hover {
 
 .stat strong {
   display: block;
-  font-size: 1.6rem;
+  font-size: var(--fs-lg);
   color: var(--navy);
 }
 
 .stat span {
   color: var(--muted);
-  font-size: 0.85rem;
+  font-size: var(--fs-sm);
 }
 
 .card-grid {
@@ -180,20 +315,35 @@ nav a:hover {
   background: var(--bg);
 }
 
+.card-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  margin-bottom: 12px;
+  color: var(--gold-text);
+}
+
+.card-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
 .card h3 {
   margin: 4px 0 8px;
-  font-size: 1.05rem;
+  font-size: var(--fs-md);
 }
 
 .card p {
   color: var(--muted);
-  font-size: 0.92rem;
+  font-size: var(--fs-sm);
   margin: 0;
 }
 
 .card-date {
-  color: var(--gold);
-  font-size: 0.78rem;
+  color: var(--gold-text);
+  font-size: var(--fs-xs);
   font-weight: 600;
   margin: 0;
 }
@@ -220,7 +370,18 @@ nav a:hover {
 .contact-form {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 4px;
+}
+
+.contact-form label {
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  color: var(--muted);
+  margin-top: 8px;
+}
+
+.contact-form label:first-child {
+  margin-top: 0;
 }
 
 .contact-form input,
@@ -229,15 +390,20 @@ nav a:hover {
   border: 1px solid var(--border);
   border-radius: 6px;
   font-family: inherit;
-  font-size: 0.92rem;
+  font-size: var(--fs-sm);
   resize: none;
 }
 
+.contact-form .btn {
+  margin-top: 8px;
+  align-self: flex-start;
+}
+
 .form-note {
-  color: var(--navy);
-  font-size: 0.85rem;
+  color: var(--muted);
+  font-size: var(--fs-xs);
   min-height: 1.2em;
-  margin: 0;
+  margin: 4px 0 0;
 }
 
 /* Footer */
@@ -245,7 +411,7 @@ nav a:hover {
   background: var(--navy);
   color: #9aa5b1;
   padding: 24px 0;
-  font-size: 0.85rem;
+  font-size: var(--fs-sm);
 }
 
 /* Responsive */
@@ -268,6 +434,15 @@ nav a:hover {
   }
   nav a {
     margin: 10px 0 0;
+  }
+  .hero-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+  }
+  .hero-photo {
+    width: 100%;
+    height: 160px;
   }
   .hero h1 {
     font-size: 1.9rem;
